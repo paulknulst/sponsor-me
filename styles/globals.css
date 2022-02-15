@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #334155;
+    font-family: "Poppins", sans-serif;
+}
+
+@layer components {
+    .textBlock-wrapper {
+        @apply flex flex-col justify-center p-3 space-y-5 text-white;
+    }
+    .textBlock-wrapper-top {
+        @apply flex flex-col p-3 space-y-5 text-white pt-36;
+    }
+    .textBlock-title {
+        @apply text-4xl font-medium md:text-6xl;
+    }
+
+    .textBlock-subtitle {
+        @apply text-base lg:text-lg;
+    }
+}

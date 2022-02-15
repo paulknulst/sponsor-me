@@ -1,0 +1,42 @@
+{
+  "name": "sponsor-me",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "data:import": "ts-node --project tsconfig.seeder.json seeder.ts",
+    "data:destroy": "ts-node --project tsconfig.seeder.json seeder.ts -d",
+    "env:up": "docker-compose -f docker-compose.dev.yml up -d",
+    "env:down": "docker-compose -f docker-compose.dev.yml down"
+  },
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/react-paypal-js": "^7.6.0",
+    "@stripe/stripe-js": "^1.22.0",
+    "axios": "^0.25.0",
+    "dompurify": "^2.3.5",
+    "dotenv": "^9.0.0",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0",
+    "next": "latest",
+    "next-connect": "^0.10.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-paypal-button-v2": "^2.6.3",
+    "react-query": "^3.34.14",
+    "rss-parser": "^3.12.0",
+    "stripe": "^8.202.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.4",
+    "@types/react": "17.0.38",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.1",
+    "tailwindcss": "^3.0.7",
+    "typescript": "4.5.4"
+  }
+}

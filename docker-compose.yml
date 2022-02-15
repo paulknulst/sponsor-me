@@ -1,0 +1,52 @@
+version: "3.6"
+services:
+  mongodb:
+    image: mongo:5.0.2
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=121487qw9842191841
+      - MONGODB_USER=root
+      - MONGODB_PASSWORD=121487qw9842191841
+      - MONGODB_DATABASE=donations
+    networks:
+      - default
+    volumes:
+      - db:/data/db
+    deploy:
+      placement:
+        constraints:
+          - node.labels.sponsorme.db == true
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${DOCKER_REGISTRY}/sponsorpage
+    env_file:
+      - .env.local
+    networks:
+      - traefik-public
+      - default
+    depends_on:
+      - mongodb
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.sponsor-http.rule=Host(`sponsor.knulst.de`)
+        - traefik.http.routers.sponsor-http.entrypoints=http
+        - traefik.http.routers.sponsor-http.middlewares=https-redirect
+        - traefik.http.routers.sponsor-https.rule=Host(`sponsor.knulst.de`)
+        - traefik.http.routers.sponsor-https.entrypoints=https
+        - traefik.http.routers.sponsor-https.tls=true
+        - traefik.http.routers.sponsor-https.tls.certresolver=le
+        - traefik.http.services.sponsor.loadbalancer.server.port=3000
+        - traefik.http.routers.sponsor-https.middlewares=security-headers
+networks:
+  traefik-public:
+    external: true
+  default:
+    external: false
+volumes:
+  db:
