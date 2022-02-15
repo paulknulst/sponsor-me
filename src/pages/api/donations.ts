@@ -31,34 +31,4 @@ handler
     }
   });
 
-// const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-//   const { method } = req;
-
-//   await dbConnect();
-
-//   switch (method) {
-//     case "GET":
-//       console.log("GOT GET REQ");
-
-//       break;
-
-//     case "POST":
-//       console.log("GOT POST REQ");
-
-//       try {
-//         const donation = new Donation(req.body);
-//         await donation.save();
-//         res.status(201).json(donation);
-//       } catch (error) {
-//         console.log(error.message);
-
-//         res.status(500).json({ message: "Server Error" });
-//       }
-//       break;
-
-//     default:
-//       res.status(400).json({ message: "Not Found" });
-//   }
-// };
-
 export default handler;
