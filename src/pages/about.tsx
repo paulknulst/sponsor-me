@@ -44,7 +44,7 @@ const about = () => {
                 </h1>
                 <p className="textBlock-subtitle">Husband, father of two, geek, lifelong learner, tech lover, software
                     engineer and NFT creator. <br/>
-                    Writing at <Link href="https://paulknulst.medium.com">
+                    Writing on <Link href="https://paulknulst.medium.com">
                         <a className="hover:text-blue-700 cursor-pointer text-yellow-400" target="_blank">Medium</a>
                     </Link> about projects and challenges in IT.</p>
                 <p className="textBlock-subtitle">Connect with me on <Link href="https://linkedin.com/in/paulknulst">
